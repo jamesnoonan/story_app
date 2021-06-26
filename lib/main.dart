@@ -59,7 +59,20 @@ class _MyHomePageState extends State<MyHomePage> {
           size: 28,
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 30,
+        unselectedFontSize: 16,
+        selectedFontSize: 16,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: "Stories",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Settings"),
+        ],
+      ),
     );
   }
 }
