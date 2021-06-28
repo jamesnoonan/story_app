@@ -1,38 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:story_app/data/setting-data.dart';
+import 'package:story_app/data/story-data.dart';
+import 'package:story_app/story-view.dart';
 
 class StoryCard extends StatelessWidget {
-  final String title;
-  final DateTime date;
+  final StoryItem story;
 
-  const StoryCard({Key key, this.title, this.date}) : super(key: key);
+  const StoryCard({Key key, this.story}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SettingItem storySetting = SettingData.settingData[story.setting];
     return GestureDetector(
       onTap: () {
-        print(title);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => StoryView(
+                  story: story,
+                )));
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey,
+          color: storySetting.color,
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
         margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 24, color: Colors.white),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            image: DecorationImage(
+              alignment: Alignment.centerLeft,
+              fit: BoxFit.contain,
+              image: AssetImage(storySetting.getMainImage()),
             ),
-            Text(
-              DateFormat('dd/MM').format(date),
-              style: TextStyle(fontSize: 18, color: Colors.white60),
-            ),
-          ],
+          ),
+          padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                story.title,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+              Text(
+                DateFormat('dd/MM').format(story.updated),
+                style: TextStyle(fontSize: 18, color: Colors.white60),
+              ),
+            ],
+          ),
         ),
       ),
     );

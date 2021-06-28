@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:story_app/story-card.dart';
 
+import 'data/story-data.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -40,14 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontSize: 38, color: Color.fromRGBO(50, 50, 50, 1)),
               ),
             ),
-            StoryCard(title: 'Night at the Lighthouse', date: DateTime.now()),
-            StoryCard(title: 'The Last Day', date: DateTime.now()),
-            StoryCard(title: 'Night at the Lighthouse', date: DateTime.now()),
-            StoryCard(title: 'The Last Day', date: DateTime.now()),
-            StoryCard(title: 'Night at the Lighthouse', date: DateTime.now()),
-            StoryCard(title: 'The Last Day', date: DateTime.now()),
-            StoryCard(title: 'Night at the Lighthouse', date: DateTime.now()),
-            StoryCard(title: 'The Last Day', date: DateTime.now()),
+            ...StoryData.stories
+                .map((story) => StoryCard(story: story))
+                .toList()
           ],
         ),
       ),
