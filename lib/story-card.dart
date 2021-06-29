@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:story_app/data/setting-data.dart';
 import 'package:story_app/data/story-data.dart';
@@ -41,7 +42,13 @@ class StoryCard extends StatelessWidget {
               Text(
                 story.title,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 24, color: Colors.white),
+                style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
               Text(
                 DateFormat('dd/MM').format(story.updated),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:story_app/data/setting-data.dart';
 import 'package:story_app/data/story-data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StoryView extends StatefulWidget {
   final StoryItem story;
@@ -67,18 +68,24 @@ class _StoryViewState extends State<StoryView> {
                       children: [
                         Text(
                           widget.story.title,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
+                          style: GoogleFonts.montserrat(
+                            textStyle: TextStyle(
+                              color: Color.fromRGBO(229, 213, 178, 1),
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.only(bottom: 20),
                           child: Text(
                             "by " + widget.story.author,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(
+                                color: Color.fromRGBO(229, 213, 178, 1),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),
@@ -87,7 +94,7 @@ class _StoryViewState extends State<StoryView> {
                             widget.story.body,
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color.fromRGBO(229, 213, 178, 1),
                               height: 1.3,
                               fontSize: 19,
                             ),

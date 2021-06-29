@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:story_app/story-card.dart';
 
 import 'data/story-data.dart';
@@ -38,8 +39,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
                 'My Stories',
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 38, color: Color.fromRGBO(50, 50, 50, 1)),
+                style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                    color: Color.fromRGBO(35, 21, 39, 1),
+                    fontSize: 34,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
             ...StoryData.stories
