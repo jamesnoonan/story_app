@@ -35,13 +35,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+              padding: EdgeInsets.only(
+                top: 25.0,
+                left: 10.0,
+                right: 10.0,
+                bottom: 10.0,
+              ),
               child: Text(
                 'My Stories',
                 textAlign: TextAlign.left,
                 style: GoogleFonts.montserrat(
                   textStyle: TextStyle(
-                    color: Color.fromRGBO(35, 21, 39, 1),
+                    color: Color.fromRGBO(36, 21, 39, 1),
                     fontSize: 34,
                     fontWeight: FontWeight.w600,
                   ),
@@ -58,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {},
         tooltip: 'Write a new story',
         child: Icon(
-          Icons.edit,
-          size: 28,
+          Icons.add,
+          size: 34,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -67,6 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
         iconSize: 30,
         unselectedFontSize: 16,
         selectedFontSize: 16,
+        selectedLabelStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontWeight: FontWeight.w500),
+        ),
+        unselectedLabelStyle: GoogleFonts.montserrat(
+          textStyle: TextStyle(fontWeight: FontWeight.w500),
+        ),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),

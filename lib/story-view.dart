@@ -38,7 +38,7 @@ class _StoryViewState extends State<StoryView> {
     SettingItem setting = SettingData.settingData[widget.story.setting];
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(35, 21, 39, 1),
+      backgroundColor: setting.backgroundColor,
       body: Stack(
         children: [
           Transform(
@@ -49,15 +49,37 @@ class _StoryViewState extends State<StoryView> {
           ListView(
             controller: controller,
             children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  padding: EdgeInsets.only(top: 10, left: 15),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: Color.fromRGBO(0, 0, 0, 0.4),
+                      radius: 28,
+                      child: Container(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 36,
+                          color: Color.fromRGBO(231, 213, 179, 1),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox.fromSize(
                 size: Size(MediaQuery.of(context).size.width,
-                    MediaQuery.of(context).size.width * (12 / 16)),
+                    MediaQuery.of(context).size.width * (12 / 16) - 70),
               ),
               Image.asset(setting.getParallaxImage()),
               Container(
-                transform: Matrix4.translationValues(0.0, -10.0, 0.0),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(35, 21, 39, 1),
+                  color: Color.fromRGBO(36, 21, 39, 1),
                 ),
                 child: SafeArea(
                   child: Padding(
@@ -70,7 +92,7 @@ class _StoryViewState extends State<StoryView> {
                           widget.story.title,
                           style: GoogleFonts.montserrat(
                             textStyle: TextStyle(
-                              color: Color.fromRGBO(229, 213, 178, 1),
+                              color: Color.fromRGBO(231, 213, 179, 1),
                               fontSize: 30,
                               fontWeight: FontWeight.w600,
                             ),
@@ -82,7 +104,7 @@ class _StoryViewState extends State<StoryView> {
                             "by " + widget.story.author,
                             style: GoogleFonts.montserrat(
                               textStyle: TextStyle(
-                                color: Color.fromRGBO(229, 213, 178, 1),
+                                color: setting.textColor,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -94,7 +116,7 @@ class _StoryViewState extends State<StoryView> {
                             widget.story.body,
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                              color: Color.fromRGBO(229, 213, 178, 1),
+                              color: Color.fromRGBO(231, 213, 179, 1),
                               height: 1.3,
                               fontSize: 19,
                             ),
@@ -109,6 +131,16 @@ class _StoryViewState extends State<StoryView> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: setting.textColor,
+        onPressed: () {},
+        tooltip: 'Edit Story',
+        child: Icon(
+          Icons.edit,
+          size: 28,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
